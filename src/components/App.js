@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       filters: [],
       selectedFilter: null,
-      fruits: []
+      fruit: []
     };
   }
   
@@ -27,7 +27,7 @@ class App extends React.Component {
   fetchFruits = () => {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(fruits => this.setState({ fruits }));
+      .then(fruit => this.setState({ fruit }));
   }
   
   updateFilter = event => {
@@ -39,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <FruitBasket
-        fruits={this.state.fruits}
+        fruits={this.state.fruit}
         filters={this.state.filters}
         selectedFilter = {this.state.selectedFilter}
         onUpdateFilter={this.updateFilter}
