@@ -39,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <FruitBasket
-        fruits={this.state.fruit}
+        fruit={this.state.fruit}
         filters={this.state.filters}
         selectedFilter = {this.state.selectedFilter}
         onUpdateFilter={this.updateFilter}
