@@ -1,7 +1,7 @@
 import React from 'react';
 
-const FilteredFruitList = ({ fruits, filter }) => {
-  const fruitList = !filter ? fruits : fruits.filter(fruit => fruit.fruit_type === filter);
+const FilteredFruitList = ({ fruit, filter }) => {
+  const fruitList = !filter ? fruit : fruit.filter(item => item.fruit_type === filter);
                       
   return (
     <ul className="fruit-list">
@@ -11,7 +11,7 @@ const FilteredFruitList = ({ fruits, filter }) => {
 };
   
 FilteredFruitList.defaultProps = {
-  fruits: [],
+  fruit: [],
   filter: null
 };
 
