@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FilteredFruitList extends Component {
-  render() {
-
-    return (
-      <ul className="fruit-list">
-        {this.props.items.map((item, index) => <li key={index}>{item.char}</li>)}
-      </ul>
-    );
-  }
-}
+const FilteredFruitList = ({ fruits, filter }) => {
+  const fruitList = !filter ? fruits : fruits.filter(fruit => fruit.fruit_type === filter);
+                      
+  return (
+    <ul className="fruit-list">
+      {fruitList.map((fruit, index) => <li key={fruit}>{fruit.char}</li>)}
+    </ul>
+  );
+};
+  
+FilteredFruitList.defaultProps = {
+  fruits: [],
+  filter: null
+};
 
 export default FilteredFruitList;

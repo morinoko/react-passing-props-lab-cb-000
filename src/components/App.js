@@ -9,33 +9,41 @@ class App extends React.Component {
     this.state = {
       filters: [],
       selectedFilter: null,
-      items: []
+      fruits: []
     };
   }
   
   componentDidMount() {
-    fetch('/api/fruit')
-      .then(response => response.json())
-      .then(items => this.setState({ items }));
+    this.fetchFilters();
+    this.fetchFruits();
   }
   
-  handleFilterChange = event => {
+  fetchFilters = () => {
+    fetch('/api/fruit_types')
+      .then(response => response.json())
+      .then(filters => this.setState({ filters }));
+  }
+  
+  fetchFruits = () => {
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(fruits => this.setState({ fruits }));
+  }
+  
+  updateFilter = event => {
     console.log('new filter: ', event.target.value);
     
-    const newFilter = event.target.value;
-    const updatedItems = !newFilter || newFilter === 'all' ? 
-                         this.state.items :
-                         this.state.items.filter(item => item.fruit_type === newFilter);
-    
-    this.setState({ 
-      selectedFilter: event.target.value,
-      items: updatedItems
-    });
+    this.setState({ selectedFilter: event.target.value });
   }
   
   render() {
     return (
-      <FruitBasket handleChange={this.handleFilterChange} items={this.state.items} />
+      <FruitBasket
+        fruits={this.state.fruits}
+        filters={this.state.filters}
+        selectedFilter = {this.state.selectedFilter}
+        onUpdateFilter={this.updateFilter}
+     />
     )
   }
 }
