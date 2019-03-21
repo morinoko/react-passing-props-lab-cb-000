@@ -42,7 +42,7 @@ class App extends React.Component {
         fruit={this.state.fruit}
         filters={this.state.filters}
         currentFilter = {this.state.currentFilter}
-        onUpdateFilter={this.updateFilter}
+        updateFilterCallback={this.updateFilter}
      />
     )
   }
