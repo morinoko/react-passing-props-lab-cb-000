@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       filters: [],
-      selectedFilter: null,
+      currentFilter: null,
       fruit: []
     };
   }
@@ -33,7 +33,7 @@ class App extends React.Component {
   updateFilter = event => {
     console.log('new filter: ', event.target.value);
     
-    this.setState({ selectedFilter: event.target.value });
+    this.setState({ currentFilter: event.target.value });
   }
   
   render() {
@@ -41,7 +41,7 @@ class App extends React.Component {
       <FruitBasket
         fruit={this.state.fruit}
         filters={this.state.filters}
-        selectedFilter = {this.state.selectedFilter}
+        currentFilter = {this.state.currentFilter}
         onUpdateFilter={this.updateFilter}
      />
     )
