@@ -3,18 +3,18 @@ import React from 'react';
 import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
-const FruitBasket = ({ fruits, filters, selectedFilter, onUpdateFilter }) =>
+const FruitBasket = ({ fruit, filters, selectedFilter, onUpdateFilter }) =>
   <div className="fruit-basket">
     <Filter
       filters={filters}
       handleChange={onUpdateFilter} />
     <FilteredFruitList
-      fruits={fruits}
+      fruit={fruit}
       filter={selectedFilter} />
   </div>;
 
 FruitBasket.defaultProps = {
-  fruits: [],
+  fruit: [],
   filters: [],
   currentFilter: null,
   onUpdateFilter: () => {}
